@@ -1,6 +1,7 @@
 app:
   version_check_url: "https://raw.githubusercontent.com/sansan0/TrendRadar/refs/heads/master/version"
   show_version_update: true # 控制显示版本更新提示，如果 false，则不接受新版本提示
+  timezone: "Asia/Shanghai"  # ✅ 新增：设置时区为中国东8区
 
 crawler:
   request_interval: 1000 # 请求间隔(毫秒)
@@ -27,6 +28,7 @@ crawler:
 report:
   mode: "daily" # 可选: "daily"|"incremental"|"current"
   rank_threshold: 5 # 排名高亮阈值
+  timezone: "Asia/Shanghai"  # ✅ 新增：报告时区设置
 
 notification:
   enable_notification: true # 是否启用通知功能，如果 false，则不发送手机通知
@@ -42,11 +44,12 @@ notification:
   #   - 希望在晚上固定时间收到汇总（如 20:00-22:00）
   push_window:
     enabled: true  # ✅ 启用推送时间窗口控制
+    timezone: "Asia/Shanghai"  # ✅ 新增：时间窗口时区（中国东8区）
     # 注意：GitHub Actions 执行时间不稳定，时间范围建议至少留足 2 小时
     # 如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上
     time_range:
-      start: "07:00"  # ✅ 早上7点开始推送窗口
-      end: "09:00"    # ✅ 早上9点结束推送窗口
+      start: "07:00"  # ✅ 北京时间早上7点开始推送窗口
+      end: "09:00"    # ✅ 北京时间早上9点结束推送窗口
     once_per_day: true  # ✅ 每天只推送一次（早上汇总）
     push_record_retention_days: 7  # 推送记录保留天数
 
